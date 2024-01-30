@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <style>
+        #menutb{
+            width: 500px;
+            height: 100px;
+            border: black solid 1px;
+        }
+    </style>
+    <table id="menutb">
+        <tr>
+            <th>메뉴번호</th>
+            <th>메뉴이름</th>
+            <th>메뉴가격</th>
+            <th>카테고리 코드</th>
+            <th>판매 상태</th>
+        </tr>
+        <tr th:each="menu : ${menus}">   <!--foreach 문 표현식-->
+            <td th:text="${menu.code}"></td>
+            <td th:text="${menu.name}"></td>
+            <td th:text="${menu.price}"></td>
+            <td th:text="${menu.categoryCode}"></td>
+            <td th:text="${menu.status}"></td>
+        </tr>
+    </table>
+    <a href="http://localhost:8080"><input type="button" value="돌아가기"></a>
+</body>
+</html>

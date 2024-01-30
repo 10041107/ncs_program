@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴 키오스크</title>
+</head>
+<body>
+  <h1>메뉴 키오스크</h1>
+  <h3>1. 전체 메뉴 조회</h3>
+  <button onclick="location.href='menus/menus'">전체 메뉴 조회하기</button>
+
+  <h3>2. 단일 메뉴 조회</h3>
+  <button onclick="location.href='menus/onemenu'">단일 메뉴 조회하기</button>
+
+  <h3>3. 신규 메뉴 등록</h3>
+  <button onclick="location.href='regist'">신규 메뉴 등록하기</button>
+
+  <h3>4. 메뉴 수정</h3>
+  <button onclick="location.href='update'">메뉴 수정하기</button>
+
+  <h3>5. 메뉴 삭제</h3>
+  <button onclick="location.href='delete'">메뉴 삭제하기</button>
+
+  <h3>3. 사용자 로그인</h3>
+  <form action="/menus/login" method="post">
+    아이디   : <input type="text" name="id"/> <br>
+    비밀번호 : <input type= "password" name="pwd"/>
+    <button>요청하기</button>
+  </form>
+
+
+
+
+ <!-- a태그 href 랑 button 태그 location.href 차이는 자바스크립트 사용유무. 기능은 차이 없음-->
+</body>
+</html>

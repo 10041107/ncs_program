@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.pos.menu.model.MenuDAO">
+
+    <resultMap id="menuResult" type="com.ohgiraffers.pos.menu.dto.MenuDTO">
+        <id property="code" column="MENU_CODE"/>
+        <result property="name" column="MENU_NAME"/>
+        <result property="price" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="status" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="selectAllMenu" resultMap="menuResult">
+        SELECT
+            *
+          FROM TBL_MENU
+         WHERE ORDERABLE_STATUS='Y'
+    </select>
+
+    <select id="selectAllName" resultMap="menuResult">
+        SELECT
+            MENU_NAME
+          FROM TBL_MENU
+    </select>
+
+    <select id="selectOneMenu" resultMap="menuResult">
+        SELECT
+            *
+          FROM TBL_MENU
+         WHERE MENU_CODE = #{code}
+    </select>
+
+    <insert id="regist" parameterType="com.ohgiraffers.pos.menu.dto.MenuDTO">
+        INSERT INTO TBL_MENU(
+            MENU_CODE,
+            MENU_NAME,
+            MENU_PRICE,
+            CATEGORY_CODE,
+            ORDERABLE_STATUS
+        )VALUES(
+            ${code},
+            "${name}",          <!-- mybatis 문제 === 공부 더 하자 -->
+            ${price},
+            ${categoryCode},
+            'Y'
+        )
+    </insert>
+
+    <update id="update" parameterType="com.ohgiraffers.pos.menu.dto.MenuDTO">
+        UPDATE TBL_MENU
+           SET MENU_NAME= #{name},
+               MENU_PRICE= #{price},
+               CATEGORY_CODE= #{categoryCode}
+         WHERE MENU_CODE= #{code}
+    </update>
+
+    <delete id="delete" parameterType="com.ohgiraffers.pos.menu.dto.MenuDTO">
+        DELETE
+        FROM TBL_MENU
+        WHERE MENU_CODE= #{code}
+    </delete>
+
+</mapper>
