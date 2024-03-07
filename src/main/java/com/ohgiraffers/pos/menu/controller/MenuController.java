@@ -70,8 +70,14 @@ public class MenuController extends HttpServlet {
 
 
 
-    @GetMapping("regist")               /// get 매핑이 전달된 location.href 값을 html 문으로 보내주는 역할을 하는듯
-    public void insert(){}
+    @GetMapping("regist")
+    public ModelAndView insert() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("menus/regist");
+        return mv;
+    }
+
+
     @PostMapping("regist")  /*regist 진행순서 2번 */
     public ModelAndView insertMenu(ModelAndView mv,MenuDTO menuDTO) throws NotInsertNameException {
         int regist = menuService.regist(menuDTO);  // service로 보내 결과값 받아옴
@@ -85,7 +91,11 @@ public class MenuController extends HttpServlet {
     }
 
     @GetMapping("update")
-    public void update(){}
+    public ModelAndView update() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("menus/update");
+        return mv;
+    }
 
     @PostMapping("update")
     public ModelAndView updateMenu(ModelAndView mv, MenuDTO menuDTO){
@@ -101,7 +111,11 @@ public class MenuController extends HttpServlet {
     }
 
     @GetMapping("delete")
-    public void delete(){}
+    public ModelAndView delete() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("menus/update");
+        return mv;
+    }
 
     @PostMapping("delete")
     public ModelAndView deleteMenu(ModelAndView mv, MenuDTO menuDTO){
